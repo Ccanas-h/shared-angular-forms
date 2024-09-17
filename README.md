@@ -1,12 +1,13 @@
-¿Qué es ControlContainer?
+##¿Qué es ControlContainer?
+
 ControlContainer es una clase de Angular Forms que actúa como un contenedor para formularios. Es una forma de hacer referencia a un FormGroup o FormArray que está "conteniendo" el formulario en un nivel más alto en la jerarquía de componentes.
 
-¿Por qué se usa ControlContainer?
+##¿Por qué se usa ControlContainer?
 Cuando trabajamos con formularios anidados en Angular, como tener componentes separados que gestionan partes de un formulario más grande, necesitamos una manera de acceder al formulario padre (FormGroup) desde un componente hijo. Es decir, el componente hijo (por ejemplo, AddressGroupComponent) necesita saber en qué formulario más grande está incluido para agregar o quitar controles.
 
 Aquí es donde entra en juego ControlContainer. Nos permite acceder al FormGroup que está más arriba en la jerarquía de componentes, y de esta manera, podemos "anidar" formularios sin problemas.
 
-¿Cómo funciona la inyección de ControlContainer?
+##¿Cómo funciona la inyección de ControlContainer?
 
 ``````
 viewProviders: [
@@ -16,7 +17,7 @@ viewProviders: [
   }
 ]
 ``````
-Inyección de ControlContainer: Este código dice que queremos inyectar el ControlContainer desde un nivel superior (padre) en el árbol de componentes.
+###Inyección de ControlContainer: Este código dice que queremos inyectar el ControlContainer desde un nivel superior (padre) en el árbol de componentes.
 
 La opción skipSelf: true asegura que Angular busque el ControlContainer desde el padre del componente actual, ignorando el propio componente si lo tiene. Esto es importante porque estamos asumiendo que el FormGroup que nos interesa está definido en un nivel superior, no dentro del componente hijo.
 Vinculación con el Formulario Padre: Con ControlContainer inyectado, en el componente podemos acceder al FormGroup padre usando la referencia a parentContainer:
